@@ -46,6 +46,21 @@ window.addEventListener('load', function() {
     var dropout = document.querySelector('.dropout');
     dropout.textContent = desertionPercentage(PLACE, CODE);
 
+    var teacherRatings = document.querySelector('.teacher-ratings');
+    teacherRatings.textContent = TeachersPoints(PLACE, CODE);
+
+    var jediMasterRatings = document.querySelector('.jedi-master-ratings');
+    jediMasterRatings.textContent = jediMasterPoints(PLACE, CODE);
+
+    var studentsSatisfaction = document.querySelector('.students-satisfaction');
+    studentsSatisfaction.textContent = satisfied(PLACE,CODE);
+
+
+
+
+
+
+
     function totalActive(place, code, activeOrNotActive) {
       var isActive = 0;
       var isNotActive = 0;
@@ -68,6 +83,53 @@ window.addEventListener('load', function() {
     var totalStudents = totalActive(place, code, 'active') + totalActive(place, code, 'notActive');
     return parseFloat(((totalActive(place, code, 'notActive') / totalStudents) * 100).toFixed(1)) ;
   }
+
+  // funcion que saca el promedio de los puntajes de los profesores   (todos los sprints)
+function TeachersPoints(place, code) {
+  var listOfCodes = data[place];
+  // var arrayPrueba= []
+  var sum = 0;
+  var promocion = listOfCodes[code];
+  var students = promocion.students;
+  var ratings = promocion.ratings;
+  for (var i = 0 ; i < ratings.length ; i++) {
+  // arrayPrueba.push(ratings[i].teacher)  ;
+    sum += ratings[i].teacher;
+  }
+  var average = sum / ratings.length;
+  return average.toFixed(1);
+}
+
+// funcion que saca el promedio de los puntajes de los jedi-master   (todos los sprints)
+
+function jediMasterPoints(place, code) {
+  var listOfCodes = data[place];
+  var sum = 0;
+  var promocion = listOfCodes[code];
+  var students = promocion.students;
+  var ratings = promocion.ratings;
+  for (var i = 0 ; i < ratings.length ; i++) {
+    sum += ratings[i].jedi;
+  }
+  var average = sum / ratings.length;
+  return average.toFixed(1);
+}
+
+// para calcular la satisfaccion de los estudiantes :
+
+
+function satisfied(place,code) {
+  var ratings = data[place][code].ratings;
+  var sumPercent= 0;
+    for (var i = 0; i < ratings.length; i++) {
+      sumPercent = sumPercent + ratings[i]['nps']['promoters'];
+    }
+
+    var averageSatisfied = sumPercent/ratings.length
+    return averageSatisfied.toFixed(2) + '%';
+  }
+
+
 
     }
 
