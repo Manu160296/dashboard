@@ -64,6 +64,9 @@ window.addEventListener('load', function() {
     var pasivePercentage = document.querySelector('.pasive');
     pasivePercentage.textContent = pasive(PLACE, CODE) + '%';
 
+    var achievement = document.querySelector('.achievement');
+    achievement.textContent = achievement(place, code);
+
 
     function totalActive(place, code, activeOrNotActive) {
       var isActive = 0;
@@ -159,7 +162,7 @@ window.addEventListener('load', function() {
       for (var i = 0 ; i < array.length ; i++) {
         sum += data[place][code].ratings[i].nps.promoters;
       }
-      return sum / array.length;
+      return (sum / array.length).toFixed(1);
     }
 
     function detractors(place, code) {
@@ -168,7 +171,7 @@ window.addEventListener('load', function() {
       for (var i = 0 ; i < array.length ; i++) {
         sum += data[place][code].ratings[i].nps.detractors;
       }
-      return sum / array.length;
+      return (sum / array.length).toFixed(1);
     }
 
     function pasive(place, code) {
@@ -177,7 +180,27 @@ window.addEventListener('load', function() {
       for (var i = 0 ; i < array.length ; i++) {
         sum += data[place][code].ratings[i].nps.passive;
       }
-      return sum / array.length;
+      return (sum / array.length).toFixed(1);
+    }
+
+    function achievement(place, code) {
+      var container = [];
+      var average = 0;
+      var counter = 0;
+      for (var i = 0 ; i < data[place][code].students.length ;i++) {
+        var arrayOfSprints = [place][code].students[i].sprints;
+        if (data[place][code].students[i].active === true) {
+          var arrayStudent = [];
+          for (var j = 0 ; j < arrayOfSprints.length ; j++) {
+            var tech = arrayOfSprints[j].score.tech;
+            var hse = arrayOfSprints[j].score.hse;
+            if (tech >= 1260 && hse >= 860) {
+              counter++;
+            }
+          }
+        }
+      }
+      return counter ;
     }
   }
 });

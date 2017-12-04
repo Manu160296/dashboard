@@ -6,34 +6,21 @@
 }
 
 .header {
-  outline: 1px solid red ;
   padding: 1vh 43vw;
 }
 
-.header figure{
-  outline: 1px solid green;
-}
-
 .logo {
-  outline: 1px solid blue;
   width: 12vw;
   height: auto;
 }
 
 nav{
-  outline: 1px solid purple;
   background-color: #E1E1E1;
   padding: 0 10px;
 
 }
 
-nav ul {
-  outline: 1px solid black;
-
-}
-
 nav ul li {
-  outline: 1px solid green;
   list-style: none;
   display: inline-block;
   font-size: 1.5em;
@@ -46,14 +33,12 @@ nav ul li:hover{
 }
 
 #filters{
-  outline: 1px solid green ;
   background-color: #ffffff;
   margin: 40px 0;
   padding: 0 10vw;
 }
 
 #filters select {
-  outline: 1px solid red;
   border-radius:20px;
   display: inline-block;
   font-size: 1.3em;
@@ -72,12 +57,10 @@ nav ul li:hover{
 /*estilos global data */
 
 .global-data ,.container-ratings ,.sprint-data{
-  outline: 1px solid red;
   margin: 0 20px;
 }
 
 .enrollment, .global-achievement, .net-promoter-score{
-  outline: 1px solid blue;
   display: inline-block;
   width: 30vw;
   margin: 20px;
@@ -92,12 +75,10 @@ nav ul li:hover{
 }
 
 .title-global h3{
-  outline: 1px solid purple ;
   margin: 10px 0 ;
 }
 
 .global-data .short-item ,.container-ratings .short-item{
-  outline: 1px solid green;
   background-color: #F7F7F7;
   border-radius: 10px;
   display: inline-block;
@@ -109,7 +90,6 @@ nav ul li:hover{
 }
 
 .global-data .large-item ,.sprint-achievement .large-item{
- outline: 1px solid red;
  background-color: #F7F7F7;
  border-radius: 10px;
  font-size: 0.9em;
@@ -132,8 +112,6 @@ nav ul li:hover{
 }
 
 .global-data figure, .container-ratings figure, .sprint-achievement figure{
-  outline: 1px solid orange;
-/*  display: inline-block; */
 margin: 20px;
 padding: 20px;
 
@@ -141,14 +119,12 @@ padding: 20px;
 }
 
 .global-data img ,.container-ratings img ,.sprint-achievement img{
-  outline: 1px solid black;
   height: 170px;
   margin-left: 23px;
   width: 266px;
 }
 
 .global-data .nps-item {
-  outline: 1px solid red;
   background-color: #F7F7F7;
   border-radius: 10px;
   display: inline-block;
@@ -173,7 +149,6 @@ padding: 20px;
 
 
 .hse-achievement ,.tech-achievement{
-  outline: 1px solid blue;
   display: inline-block;
   width: 46vw;
   margin: 20px;
@@ -183,33 +158,11 @@ padding: 20px;
   border-radius: 20px;
 }
 
-/*.title-global{
-  text-align: center;
-  margin: 10px ;
-  background-color: #ffffff;
-  border-radius: 20px;
-
-}  */
-
 .hse-achievement h3 ,.tech-achievement h3{
-  outline: 1px solid purple ;
   margin: 10px 0 ;
 }
 
-/*.global-data .short-item {
-  outline: 1px solid green;
-  background-color: #F7F7F7;
-  border-radius: 10px;
-  display: inline-block;
-  font-size: 0.9em;
-  margin-left: 10px;
-  padding: 10px;
-  text-align: center;
-  width: 45%;
-}  */
-
-
-/*estilos para eventos */
+/*estil+os para eventos */
 .show{
   display: block;
 }
