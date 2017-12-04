@@ -55,9 +55,17 @@ window.addEventListener('load', function() {
     var studentsSatisfaction = document.querySelector('.students-satisfaction');
     studentsSatisfaction.textContent = satisfied(PLACE,CODE);
 
+    var netPromoterScore = document.querySelector('.nps');
+    netPromoterScore.textContent = npsOfSprints(PLACE, CODE);
 
+    var promotersPercentage = document.querySelector('.promoters');
+    promotersPercentage.textContent = promoters(PLACE, CODE) + '%';
 
+    var detractorsPercentage = document.querySelector('.detractors');
+  detractorsPercentage.textContent = detractors(PLACE, CODE) + '%';
 
+  var pasivePercentage = document.querySelector('.pasive');
+  pasivePercentage.textContent = pasive(PLACE, CODE) + '%';
 
 
 
@@ -126,7 +134,54 @@ function satisfied(place,code) {
     }
 
     var averageSatisfied = sumPercent/ratings.length
-    return averageSatisfied.toFixed(2) + '%';
+    return averageSatisfied.toFixed(2);
+  }
+
+  // funcion que calcula el net promoter score :
+  function npsOfSprints(place, code) {
+    var listOfCodes = data[place];
+    var anwersContainer = [];
+    var sum = 0;
+    var totalAnswers = 0;
+    var promocion = listOfCodes[code];
+    var students = promocion.students;
+    var ratings = promocion.ratings;
+    for (var i = 0 ; i < ratings.length ; i++) {
+      // para promoters
+      anwersContainer.push(ratings[i].nps.promoters - ratings[i].nps.detractors);
+    }
+    for (var j = 0 ; j < anwersContainer.length;j++) {
+      sum += anwersContainer[j];
+    }
+    return sum / anwersContainer.length;
+  }
+
+  // funcion que calula promoters :
+function promoters(place, code) {
+  var sum = 0;
+  var array = data[place][code].ratings;
+  for (var i = 0 ; i < array.length ; i++) {
+    sum += data[place][code].ratings[i].nps.promoters;
+  }
+  return sum / array.length;
+}
+
+function detractors(place, code) {
+    var sum = 0;
+    var array = data[place][code].ratings;
+    for (var i = 0 ; i < array.length ; i++) {
+      sum += data[place][code].ratings[i].nps.detractors;
+    }
+    return sum / array.length;
+  }
+
+  function pasive(place, code) {
+    var sum = 0;
+    var array = data[place][code].ratings;
+    for (var i = 0 ; i < array.length ; i++) {
+      sum += data[place][code].ratings[i].nps.passive;
+    }
+    return sum / array.length;
   }
 
 
